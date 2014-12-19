@@ -8,7 +8,7 @@ public interface DataTransactionProvider {
 	 * Starts a new batch with some parameters
 	 * All transactions that happen in the same batch should be fetchable with getBatch()
 	 */
-	public DataTransactionBatch newBatch(String context, String creatorId, String sourceId, Direction direction, Transactionality transactionality);
+	public <T> DataTransactionBatch<T> newBatch(ProviderResolver<T> providerResolver, String context, String creatorId, String sourceId, Direction direction, Transactionality transactionality);
 	/**
 	 * Gets a specific transaction by id
 	 */
@@ -27,4 +27,8 @@ public interface DataTransactionProvider {
 	 * If you have a pending three phase transaction before the "from" timestamp, it will still be returned. 
 	 */
 	public List<DataTransaction<?>> getPendingTransactions(String creatorId, Date from);
+	/**
+	 * Get a handle on a transaction
+	 */
+	public DataTransactionHandle getHandle(String transactionId);
 }
