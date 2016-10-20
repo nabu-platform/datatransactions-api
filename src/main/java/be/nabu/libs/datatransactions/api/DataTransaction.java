@@ -63,6 +63,10 @@ public interface DataTransaction<T> {
 	 */
 	public String getCreatorId();
 	/**
+	 * Each transaction must have a single handler that can be resolved for recovery purposes
+	 */
+	public String getHandlerId();
+	/**
 	 * The direction of the data transaction
 	 */
 	public Direction getDirection();

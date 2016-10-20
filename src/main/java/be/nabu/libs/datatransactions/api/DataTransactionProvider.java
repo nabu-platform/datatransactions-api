@@ -8,7 +8,7 @@ public interface DataTransactionProvider {
 	 * Starts a new batch with some parameters
 	 * All transactions that happen in the same batch should be fetchable with getBatch()
 	 */
-	public <T> DataTransactionBatch<T> newBatch(ProviderResolver<T> providerResolver, String context, String creatorId, String sourceId, Direction direction, Transactionality transactionality);
+	public <T> DataTransactionBatch<T> newBatch(ProviderResolver<T> providerResolver, String context, String creatorId, String sourceId, String handlerId, Direction direction, Transactionality transactionality);
 	/**
 	 * Gets a specific transaction by id
 	 */
